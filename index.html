@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adrian Dendorfer</title>
+<meta name="description" content="Adrian Dendorfer — Neuroengineering M.Sc. researcher in network neuroscience, machine learning and AI safety." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #fafaf8;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e7e6e1;
+    --accent: #2f5d50;
+    --accent-soft: #e8f0ed;
+    --tag: #f1f0ec;
+    --max: 880px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Header ---------- */
+  header {
+    padding: 88px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .name {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 4.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+  }
+  .tagline {
+    margin-top: 18px;
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    color: var(--muted);
+    font-weight: 400;
+    max-width: 620px;
+  }
+  .tagline strong { color: var(--ink); font-weight: 600; }
+  .contact {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    font-size: 0.92rem;
+  }
+  .contact a, .contact span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    transition: border-color .2s, transform .2s;
+  }
+  .contact a:hover { border-color: var(--accent); text-decoration: none; transform: translateY(-1px); }
+  .contact svg { width: 15px; height: 15px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+  .contact a.dl { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  .contact a.dl svg { stroke: #fff; }
+  .contact a.dl:hover { background: #264a40; }
+
+  /* ---------- Section ---------- */
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .sec-head h2 {
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    letter-spacing: -0.01em;
+  }
+  .sec-head .num {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  /* ---------- Entry / timeline ---------- */
+  .entry {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 8px 28px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+  }
+  .entry:first-of-type { border-top: none; }
+  .entry .when {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 3px;
+  }
+  .entry .title {
+    font-weight: 600;
+    font-size: 1.02rem;
+    line-height: 1.4;
+  }
+  .entry .org { color: var(--accent); font-weight: 600; }
+  .entry .desc {
+    color: var(--muted);
+    font-size: 0.94rem;
+    margin-top: 4px;
+  }
+  .entry ul { margin: 8px 0 0 0; padding-left: 18px; }
+  .entry li { color: var(--muted); font-size: 0.94rem; margin-bottom: 3px; }
+  .entry li::marker { color: var(--accent); }
+  .badge {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 2px 8px;
+    border-radius: 5px;
+    vertical-align: middle;
+  }
+
+  /* ---------- Highlight cards ---------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 26px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .card .k {
+    font-family: "Newsreader", serif;
+    font-size: 1.9rem;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .card .v { margin-top: 8px; font-size: 0.9rem; color: var(--muted); }
+
+  /* ---------- Publications ---------- */
+  .pub {
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+  .pub:first-of-type { border-top: none; }
+  .pub .venue { color: var(--accent); font-weight: 600; }
+  .pub .me { color: var(--ink); font-weight: 600; }
+  .pub .meta { color: var(--muted); }
+  .pub a { font-size: 0.85rem; }
+
+  /* ---------- Tags ---------- */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span {
+    background: var(--tag);
+    border: 1px solid var(--line);
+    padding: 6px 13px;
+    border-radius: 999px;
+    font-size: 0.86rem;
+    color: var(--ink);
+  }
+
+  .lede { color: var(--muted); max-width: 640px; }
+
+  footer {
+    padding: 40px 0 60px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    header { padding: 56px 0 40px; }
+    .entry { grid-template-columns: 1fr; gap: 4px; }
+    .entry .when { padding-top: 0; order: -1; }
+  }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1 class="name">Adrian&nbsp;Dendorfer</h1>
+    <p class="tagline">
+      <strong>Neuroengineering M.Sc.</strong> working at the intersection of
+      network neuroscience, machine learning, and AI safety — currently a thesis
+      researcher at the <strong>University of Cambridge</strong>.
+    </p>
+    <div class="contact">
+      <a href="mailto:adrian.dendorfer@tum.de">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        adrian.dendorfer@tum.de
+      </a>
+      <a href="https://www.linkedin.com/in/adrian-dendorfer" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11.5 17v-4a2 2 0 0 1 4 0v4M11.5 17v-7"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://scholar.google.com/citations?user=Flm5HnwAAAAJ&hl=en" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17"/><path d="M5 12.5V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-4.5"/></svg>
+        Google Scholar
+      </a>
+      <a href="cv_ad.pdf" download class="dl">
+        <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+        Download CV
+      </a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Focus right now</h2></div>
+    <p class="lede">
+      My M.Sc. thesis at the <strong>MRC Cognition and Brain Sciences Unit, University of Cambridge</strong>,
+      maps the multi-constraint landscape of mammalian brain network architecture
+      using generative network models. Alongside it I am preparing a manuscript benchmarking
+      network-comparison metrics, and I am a fellow in the
+      <strong>Cambridge AI Safety Hub Alignment Fellowship</strong>.
+    </p>
+    <div class="cards">
+      <div class="card"><div class="k">1.1</div><div class="v">M.Sc. expected grade — best in class</div></div>
+      <div class="card"><div class="k">4</div><div class="v">Peer-reviewed publications</div></div>
+      <div class="card"><div class="k">8</div><div class="v">Research labs across 5 universities</div></div>
+      <div class="card"><div class="k">GPA 4.0</div><div class="v">Exchange semester, Georgia Tech</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>Education</h2></div>
+
+    <div class="entry">
+      <div class="when">10/2023 – Present</div>
+      <div>
+        <div class="title">M.Sc. Neuroengineering <span class="org">· TU Munich</span><span class="badge">Best in class</span></div>
+        <div class="desc">Expected grade 1.1. Student representative; co-organized the MSNE Summer School 2024.
+          Completed a PhD course on probabilistic AI at NTNU. Honorable mention for an essay from the
+          International Neuroethics Society. Thesis hosted at the University of Cambridge.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">01 – 05/2023</div>
+      <div>
+        <div class="title">Exchange Semester <span class="org">· Georgia Institute of Technology</span></div>
+        <div class="desc">GPA 4.0 across 18 credit hours.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">10/2020 – 03/2024</div>
+      <div>
+        <div class="title">B.Sc. Electrical Engineering & Information Technology <span class="org">· TU Munich</span></div>
+        <div class="desc">Final grade 1.4 (180 ECTS, approx. top 5%).</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">10/2019 – 11/2023</div>
+      <div>
+        <div class="title">B.Sc. Engineering Science <span class="org">· TU Munich</span></div>
+        <div class="desc">Final grade 2.1 (210 ECTS). Resort leader in the student body of the Munich School of Engineering.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>Research Experience</h2></div>
+
+    <div class="entry">
+      <div class="when">10/2024 – 04/2025</div>
+      <div>
+        <div class="title">IBM Research Zurich & TUM.ai</div>
+        <div class="desc">Researched number handling in large language models by adapting loss functions.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">10/2024 – 02/2025</div>
+      <div>
+        <div class="title">Heidelberg Institute of Global Health & Munich Data Science Institute <span class="org">· TUM-DI Lab</span></div>
+        <div class="desc">Infection detection from wearable data: GANs for time-series imputation and
+          bi-directional LSTM-autoencoders for anomaly detection.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">08 – 11/2024</div>
+      <div>
+        <div class="title">Department of Public Health <span class="org">· University of Cambridge</span></div>
+        <div class="desc">Analysis of pulse-wave morphology in photoplethysmography (the green light in wearables). 40 h/week, on-site and remote.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">10/2023 – 06/2024</div>
+      <div>
+        <div class="title">AI in Medicine Lab <span class="org">· TU Munich</span></div>
+        <div class="desc">Benchmarked algorithms predicting "brain age" (a biomarker for cognitive fitness) from EEG,
+          combining classical signal processing and deep learning. 12 h/week.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">01 – 10/2023</div>
+      <div>
+        <div class="title">MAP Lab <span class="org">· Georgia Institute of Technology</span></div>
+        <div class="desc">Predicted spatial orientation from fMRI and fNIRS for real-time neurostimulation feedback loops. 12 h/week, on-site and remote.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">04 – 07/2022</div>
+      <div>
+        <div class="title">Little Devices Lab <span class="org">· MIT</span></div>
+        <div class="desc">Developed magnetic switches for a paper-based, modular microfluidic toolkit. Remote (pandemic).</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">07 – 10/2022</div>
+      <div>
+        <div class="title">Institute for Cognitive Systems <span class="org">· TU Munich</span></div>
+        <div class="desc">Balance-assistance device for a patient with multiple sclerosis. Accepted for NER 2023.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>Published Work</h2></div>
+
+    <div class="pub">
+      Wallner J., Berbuir S., Birner L., <span class="me">Dendorfer A.</span>, et al. (2026).
+      Overcoming Data Loss in Wearable Disease Detection with GAN-Based Imputation.
+      <span class="venue">NPJ Digital Medicine</span>.
+      <a href="https://doi.org/10.1038/s41746-026-02518-4" target="_blank" rel="noopener">DOI ↗</a>
+    </div>
+
+    <div class="pub">
+      <span class="me">Dendorfer A.</span> & Charlton P.H. (2025).
+      Wrist Photoplethysmography Pulse Waves: Morphological Classes and Physiological Influences.
+      <span class="venue">Engineering Proceedings</span>.
+      <a href="https://doi.org/10.3390/ECSA-12-26556" target="_blank" rel="noopener">DOI ↗</a>
+    </div>
+
+    <div class="pub">
+      Zausinger J., Pennig L., … <span class="me">Dendorfer A.</span>, et al. (2025).
+      Regress, Don't Guess — A Regression-like Loss on Number Tokens for Language Models.
+      <span class="venue">ICML 2025</span>.
+      <a href="https://doi.org/10.48550/arXiv.2411.02083" target="_blank" rel="noopener">DOI ↗</a>
+    </div>
+
+    <div class="pub">
+      Pilger L., Berberich N., Paredes-Acuña N., <span class="me">Dendorfer A.</span>, et al. (2023).
+      Human-centered design of a vibrotactile sensory substitution belt for feet somatosensation in a patient with multiple sclerosis.
+      <span class="venue">IEEE/EMBS NER 2023</span>.
+      <a href="https://doi.org/10.1109/NER52421.2023.10123871" target="_blank" rel="noopener">DOI ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>Leadership & Beyond Research</h2></div>
+
+    <div class="entry">
+      <div class="when">01 – 05/2025</div>
+      <div>
+        <div class="title">Recruiting Lead <span class="org">· TUM.ai</span></div>
+        <div class="desc">Led 17 students; grew total applications by 90% (to 418) and the female-to-male applicant ratio by 185%.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">10/2023 – 02/2024</div>
+      <div>
+        <div class="title">Organizer & Judge, Impact Investing Competition <span class="org">· Manage and More</span></div>
+        <div class="desc">Ran a global competition for impact-oriented social startups (€10,000 prize).</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">05/2020 – 04/2022</div>
+      <div>
+        <div class="title">Project Lead & Engineer <span class="org">· reStove (social startup)</span></div>
+        <div class="desc">Led a team of twelve developing frugal biogas plants for a partner NGO's network;
+          built prototypes in India and Germany and sustained partnerships across both countries. 15–20 h/week.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">02/2021 – 05/2022</div>
+      <div>
+        <div class="title">Board of Directors <span class="org">· Enactus Munich</span></div>
+        <div class="desc">Co-management of a student initiative building entrepreneurial solutions to global challenges.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">09/2018 – 04/2021</div>
+      <div>
+        <div class="title">Youth Parliamentarian & Treasurer <span class="org">· Hometown Youth Parliament</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06</span><h2>Scholarships & Programs</h2></div>
+    <p class="lede" style="margin-bottom:22px">
+      Supported through several of Germany's most selective talent programs and foundations:
+    </p>
+    <div class="tags">
+      <span>Max Weber Program</span>
+      <span>Manage and More</span>
+      <span>Elite Graduate Program · Elite Network of Bavaria</span>
+      <span>Deutschlandstipendium</span>
+      <span>Erasmus+</span>
+      <span>PROMOS <em style="color:var(--muted)">(declined)</em></span>
+      <span>Heinrich & Lotte Mühlfenzl Foundation</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Adrian Dendorfer · <a href="mailto:adrian.dendorfer@tum.de">adrian.dendorfer@tum.de</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('section .wrap > *, .entry, .pub, .card').forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (Math.min(i % 6, 5) * 40) + 'ms';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
