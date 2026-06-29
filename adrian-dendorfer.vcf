@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Dendorfer;Adrian;;;
+FN:Adrian Dendorfer
+TITLE:Neuroengineering M.Sc.
+EMAIL;TYPE=INTERNET:adrian.dendorfer@tum.de
+URL:https://ad045.github.io/cv-website/
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/adrian-dendorfer
+END:VCARD
