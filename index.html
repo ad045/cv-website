@@ -196,7 +196,24 @@
     padding: 40px 0 60px;
     color: var(--muted);
     font-size: 0.85rem;
-    text-align: center;
+  }
+  .footer-in {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: left;
+  }
+  .qr {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 6px;
+    background: #fff;
+    flex-shrink: 0;
+  }
+  .qr-label { color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+  @media (max-width: 480px) {
+    .footer-in { flex-direction: column; text-align: center; }
   }
 
   @media (max-width: 600px) {
@@ -463,8 +480,12 @@
 </section>
 
 <footer>
-  <div class="wrap">
-    Adrian Dendorfer · <a href="mailto:adrian.dendorfer@tum.de">adrian.dendorfer@tum.de</a>
+  <div class="wrap footer-in">
+    <img src="cv_qr.png" alt="QR code linking to this page" class="qr" width="104" height="104" />
+    <div>
+      <div class="qr-label">Scan to open or share this page</div>
+      Adrian Dendorfer · <a href="mailto:adrian.dendorfer@tum.de">adrian.dendorfer@tum.de</a>
+    </div>
   </div>
 </footer>
 
